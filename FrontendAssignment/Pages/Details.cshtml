@@ -1,0 +1,66 @@
+﻿@page
+@model FrontendAssignment.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="details">
+    <div class="row">
+
+        <div class="col-sm-3 details-image">
+            <a class="back-btn" asp-page="./Index">Tillbaka</a>
+            <img src="@Html.DisplayFor(model => model.Products.ImageSrc)" />
+        </div>
+        <div class="col-sm-9 no-padding">
+            <div class="col-sm-12">
+                <h2 class="title">
+                    @Html.DisplayFor(model => model.Products.Title)
+                </h2>
+                <div class="price">
+                    <span>
+                        Pris
+                    </span>
+                    <span>
+                        @Html.DisplayFor(model => model.Products.Price)
+                    </span>
+                </div>
+            </div>
+
+            <div class="col-sm-12 details-description">
+                @Html.DisplayFor(model => model.Products.Description)
+            </div>
+            <button class="btn btn-primary">Prenumerera</button>
+
+            <div class="popular-products col-sm-12">
+                <h3>Mest populära titlar</h3>
+                <div class="row">
+                    @foreach (var product in Model.PopularProducts)
+                    {
+                        <div class="product col col-xs- ">
+                            <div class="product-image">
+                                <a asp-page="./Details" asp-route-id="@product.Id">
+                                    <img src="@product.ImageSrc" width="40" />
+                                </a>
+                            </div>
+                            <div>
+                                <p class="title">@product.Title</p>
+                                <p class="price">Pris: @product.Price</p>
+                                @*<p>clicks: @product.Clicks</p>*@
+                                <a class="btn btn-primary toDetails" asp-page="./Details" asp-route-id="@product.Id">
+                                    Läs mer
+                                </a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+

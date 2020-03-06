@@ -1,0 +1,87 @@
+﻿@page
+@model FrontendAssignment.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+@*<p>
+    <a asp-page="Create">Create New</a>
+</p>*@
+
+<div class="special-offer-list row">
+    @foreach (var product in Model.PopularProducts)
+    {
+        <div class="product col">
+            <div class="row">
+                <div class="product-image col">
+                    <a asp-page="./Details" asp-route-id="@product.Id">
+                        <img src="@product.ImageSrc" width="40" />
+                    </a>
+                </div>
+                <div class="col">
+                    <label class="special-offer-tag">
+                        Just nu!
+                    </label>
+                    <p class="special-offer-title">@product.Title 6 månader</p>
+                    <p class="price">Pris: @product.Price</p>
+                    @*<p>clicks: @product.Clicks</p>*@
+                    <button class="btn btn-primary">
+                        prenumerera
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="row">
+    <div class="col-sm-12 product-list-title">
+        <h3>Våra tidningar</h3>
+    </div>
+</div>
+
+<div class="product-list row">
+    @foreach (var product in Model.Products)
+    {
+
+    <div class="product col">
+        
+        <div class="product-image">
+            <a asp-page="./Details" asp-route-id="@product.Id">
+                <img src="@product.ImageSrc" width="40" />
+            </a>
+        </div>
+        <div>
+
+            <p class="title">@product.Title</p>
+            <p class="price">Pris: @product.Price</p>
+            @*<p>clicks: @product.Clicks</p>*@
+            <a class="btn btn-primary toDetails" asp-page="./Details" asp-route-id="@product.Id">
+                Läs mer
+            </a>
+
+        </div>
+    </div>
+    }
+</div>
+@section scripts{
+    <script>
+        $(function () {
+            $('.description').on('click', function () {
+               $.ajax({
+                    type: "GET",
+                    url: '@Url.Page("index","IncrementClick")',
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (response) {
+                        
+                    },
+                });
+            });
+        });
+    </script>
+}

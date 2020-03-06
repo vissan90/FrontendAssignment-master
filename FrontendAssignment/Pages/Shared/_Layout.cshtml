@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FrontendAssignment</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="largerDeviceContainer">
+        <h2 class="main-title">Tidningar.se</h2>
+        <div class="navbar">
+            <div class="navbar-container">
+                <nav class="desktop navbar left">
+                    <ul>
+                        <li><a href="/">Alla tidningar</a></li>
+                        @*<li>Om oss</li>
+                         <li>Kontakt</li>*@
+                    </ul>
+                </nav>
+                <nav class="desktop navbar right">
+                    <ul>
+
+                        <li>Om oss</li>
+                        <li>Kontakt</li>
+                    </ul>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobileExpandContainer">
+        <div class="mobileExbandBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="mobileCloseBtn">
+            <span class="og-close"></span>
+        </div>
+        <div class="title mobile">
+            Tidningar.se
+        </div>
+        <nav>
+            <ul>
+                <li><a href="">Alla våra tidningar</a> </li>
+                <li>Om oss</li>
+                <li>Kontakt</li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="container">
+
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
